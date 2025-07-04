@@ -2,6 +2,14 @@
 
 Esta carpeta contiene una suite completa de tests para validar toda la funcionalidad de la aplicación de generación de planes de viaje.
 
+## ⚡ Framework de Testing: Vitest Unificado
+
+**Migrado completamente de Jest a Vitest** para unificar el testing entre frontend y backend:
+- ✅ **Frontend**: Vitest + React Testing Library + jsdom
+- ✅ **Backend**: Vitest + Supertest + Node.js environment  
+- ✅ **Configuración**: Alias absolutos `@/` en ambos entornos
+- ✅ **Performance**: Más rápido que Jest con Vite integration
+
 ## 📁 Estructura de Tests
 
 ```
@@ -32,7 +40,7 @@ tests/
 
 ## 🎯 Cobertura de Tests
 
-### Backend Tests (Jest + Supertest)
+### Backend Tests (Vitest + Supertest)
 
 #### 🔧 Services Tests
 - **MockClaudeService**: 
@@ -121,26 +129,27 @@ tests/
 ```bash
 # Backend (desde /server)
 npm install
-npm test
+npx vitest run
 
 # Frontend (desde raíz)
 npm install
-npm test
+npx vitest run
 ```
 
 ### Scripts Disponibles
 
 ```bash
 # Tests individuales
-npm run test:backend    # Solo tests del backend
-npm test               # Solo tests del frontend
+npm run test:backend    # Solo tests del backend (Vitest)
+npm run test:frontend   # Solo tests del frontend (Vitest)
+npm run test:all        # Todos los tests unificados
 
 # Con cobertura
-npm run test:coverage  # Frontend con cobertura
-cd server && npm run test:coverage  # Backend con cobertura
+npm run test:coverage   # Frontend con cobertura
+cd server && npx vitest --coverage  # Backend con cobertura
 
 # En modo watch
-npm run test:watch     # Modo watch para desarrollo
+npx vitest --watch      # Modo watch para desarrollo
 ```
 
 ## 🎯 Casos de Prueba Principales
@@ -215,13 +224,16 @@ Los tests están preparados para:
 ### Debugging Tests
 ```bash
 # Ejecutar test específico
-npm test -- TravelForm.test.tsx
+npx vitest TravelForm.test.tsx
 
 # Modo debug con logs
-npm test -- --verbose
+npx vitest --reporter=verbose
 
 # Coverage detallado
-npm run test:coverage
+npx vitest --coverage
+
+# UI de testing
+npx vitest --ui
 ```
 
 ¡Los tests están listos para validar toda la funcionalidad de Viajeros AI! 🎉
