@@ -1,4 +1,4 @@
-// Jest setup file
+import { beforeEach } from 'vitest';
 import dotenv from 'dotenv';
 
 // Load test environment variables
@@ -9,3 +9,9 @@ process.env.NODE_ENV = 'test';
 process.env.USE_MOCK_AI = 'true';
 process.env.PORT = '3002';
 process.env.CLAUDE_API_KEY = 'test-api-key';
+
+beforeEach(() => {
+  // Reset environment for each test
+  process.env.NODE_ENV = 'test';
+  process.env.USE_MOCK_AI = 'true';
+});

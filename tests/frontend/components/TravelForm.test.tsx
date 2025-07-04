@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TravelForm from '../../../src/components/TravelForm';
-import type { TravelPlanRequest } from '../../../src/types/travel';
+import TravelForm from '@/components/TravelForm';
+import type { TravelPlanRequest } from '@/types/travel';
 
 describe('TravelForm', () => {
   const mockOnSubmit = vi.fn();

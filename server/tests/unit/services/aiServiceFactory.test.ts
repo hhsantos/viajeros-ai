@@ -1,4 +1,5 @@
-import { AIServiceFactory } from '../../../../server/src/services/aiService';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { AIServiceFactory } from '@/services/aiService';
 
 describe('AIServiceFactory', () => {
   beforeEach(() => {

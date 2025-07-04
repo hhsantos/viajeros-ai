@@ -1,10 +1,11 @@
-import { TravelController } from '../../../../server/src/controllers/travelController';
-import { AIServiceFactory } from '../../../../server/src/services/aiService';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { TravelController } from '@/controllers/travelController';
+import { AIServiceFactory } from '@/services/aiService';
 import type { Request, Response } from 'express';
-import type { TravelPlanRequest } from '../../../../server/src/types/travel';
+import type { TravelPlanRequest } from '@/types/travel';
 
 // Mock the AIServiceFactory
-jest.mock('../../../../server/src/services/aiService');
+vi.mock('@/services/aiService');
 
 describe('TravelController', () => {
   let controller: TravelController;
@@ -26,21 +27,21 @@ describe('TravelController', () => {
     };
 
     mockResponse = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn().mockReturnThis()
+      status: vi.fn().mockReturnThis(),
+      json: vi.fn().mockReturnThis()
     };
 
     mockAIService = {
-      generateTravelPlan: jest.fn(),
-      validateApiKey: jest.fn(),
-      getProviderName: jest.fn()
+      generateTravelPlan: vi.fn(),
+      validateApiKey: vi.fn(),
+      getProviderName: vi.fn()
     };
 
-    (AIServiceFactory.getInstance as jest.Mock).mockResolvedValue(mockAIService);
+    (AIServiceFactory.getInstance as any).mockResolvedValue(mockAIService);
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   describe('generateTravelPlan', () => {
@@ -94,7 +95,7 @@ describe('TravelController', () => {
 
       await controller.generateTravelPlan(mockRequest as Request, mockResponse as Response);
 
-      const responseCall = (mockResponse.json as jest.Mock).mock.calls[0][0];
+      const responseCall = (mockResponse.json as any).mock.calls[0][0];
       
       expect(responseCall.metadata).toEqual({
         generatedAt: expect.any(Date),
@@ -113,15 +114,15 @@ describe('TravelController', () => {
       mockAIService.generateTravelPlan.mockResolvedValue(mockAIResponse);
 
       await controller.generateTravelPlan(mockRequest as Request, mockResponse as Response);
-      const response1 = (mockResponse.json as jest.Mock).mock.calls[0][0];
+      const response1 = (mockResponse.json as any).mock.calls[0][0];
 
       // Reset mocks and call again
-      jest.clearAllMocks();
+      vi.clearAllMocks();
       mockAIService.generateTravelPlan.mockResolvedValue(mockAIResponse);
-      (AIServiceFactory.getInstance as jest.Mock).mockResolvedValue(mockAIService);
+      (AIServiceFactory.getInstance as any).mockResolvedValue(mockAIService);
 
       await controller.generateTravelPlan(mockRequest as Request, mockResponse as Response);
-      const response2 = (mockResponse.json as jest.Mock).mock.calls[0][0];
+      const response2 = (mockResponse.json as any).mock.calls[0][0];
 
       expect(response1.id).not.toEqual(response2.id);
     });
@@ -144,7 +145,7 @@ describe('TravelController', () => {
     });
 
     it('should return unhealthy status when AI service throws error', async () => {
-      (AIServiceFactory.getInstance as jest.Mock).mockRejectedValue(new Error('Service unavailable'));
+      (AIServiceFactory.getInstance as any).mockRejectedValue(new Error('Service unavailable'));
 
       await controller.healthCheck(mockRequest as Request, mockResponse as Response);
 

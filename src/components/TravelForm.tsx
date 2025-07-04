@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { TravelPlanRequest } from '../types/travel';
+import type { TravelPlanRequest } from '@/types/travel';
 
 interface TravelFormProps {
   onSubmit: (request: TravelPlanRequest) => void;

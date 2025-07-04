@@ -1,5 +1,5 @@
-import { travelService } from '../../../src/services/travelService';
-import type { TravelPlanRequest, TravelPlanResponse } from '../../../src/types/travel';
+import { travelService } from '@/services/travelService';
+import type { TravelPlanRequest, TravelPlanResponse } from '@/types/travel';
 
 // Mock fetch globally
 const mockFetch = vi.fn();

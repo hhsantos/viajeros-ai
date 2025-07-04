@@ -1,4 +1,5 @@
-import { validateTravelPlan, sanitizeInput } from '../../../../server/src/middleware/validation';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { validateTravelPlan, sanitizeInput } from '@/middleware/validation';
 import type { Request, Response, NextFunction } from 'express';
 
 describe('Validation Middleware', () => {
@@ -9,10 +10,10 @@ describe('Validation Middleware', () => {
   beforeEach(() => {
     mockRequest = {};
     mockResponse = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn().mockReturnThis()
+      status: vi.fn().mockReturnThis(),
+      json: vi.fn().mockReturnThis()
     };
-    mockNext = jest.fn();
+    mockNext = vi.fn();
   });
 
   describe('validateTravelPlan', () => {

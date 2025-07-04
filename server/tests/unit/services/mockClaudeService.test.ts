@@ -1,5 +1,6 @@
-import { MockClaudeService } from '../../../../server/src/services/mockClaudeService';
-import type { TravelPlanRequest } from '../../../../server/src/types/travel';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { MockClaudeService } from '@/services/mockClaudeService';
+import type { TravelPlanRequest } from '@/types/travel';
 
 describe('MockClaudeService', () => {
   let mockService: MockClaudeService;

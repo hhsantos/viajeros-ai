@@ -1,5 +1,6 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import request from 'supertest';
-import { AIServiceFactory } from '../../../server/src/services/aiService';
+import { AIServiceFactory } from '@/services/aiService';
 
 describe('Health Check Integration Tests', () => {
   beforeEach(() => {

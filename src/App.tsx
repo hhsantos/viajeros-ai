@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import TravelForm from './components/TravelForm';
-import TravelPlanResult from './components/TravelPlanResult';
-import type { TravelPlanRequest, TravelPlanResponse } from './types/travel';
-import { travelService } from './services/travelService';
+import TravelForm from '@/components/TravelForm';
+import TravelPlanResult from '@/components/TravelPlanResult';
+import type { TravelPlanRequest, TravelPlanResponse } from '@/types/travel';
+import { travelService } from '@/services/travelService';
 
 function App() {
   const [loading, setLoading] = useState(false);

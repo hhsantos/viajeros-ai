@@ -11,8 +11,9 @@
     "test": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "test:backend": "cd server && npm test",
-    "test:all": "./test-all.sh"
+    "test:backend": "cd server && vitest run",
+    "test:frontend": "vitest run",
+    "test:all": "npm run test:frontend && npm run test:backend"
   },
   "dependencies": {
     "react": "19.1.0",

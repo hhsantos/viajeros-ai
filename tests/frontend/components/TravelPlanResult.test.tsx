@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TravelPlanResult from '../../../src/components/TravelPlanResult';
-import type { TravelPlanResponse } from '../../../src/types/travel';
+import TravelPlanResult from '@/components/TravelPlanResult';
+import type { TravelPlanResponse } from '@/types/travel';
 
 describe('TravelPlanResult', () => {
   const mockOnReset = vi.fn();

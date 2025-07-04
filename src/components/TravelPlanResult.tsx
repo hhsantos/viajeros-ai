@@ -1,5 +1,5 @@
 import React from 'react';
-import type { TravelPlanResponse } from '../types/travel';
+import type { TravelPlanResponse } from '@/types/travel';
 
 interface TravelPlanResultProps {
   result: TravelPlanResponse;
